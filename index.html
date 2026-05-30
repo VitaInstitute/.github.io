@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VITA | Visionary Intelligence for Therapeutic Advancement</title>
+  <meta name="description" content="VITA is a virtual research initiative focused on AI-enabled therapeutic discovery, precision medicine, AI-enabled drug delivery systems, biomarkers, and diagnostics." />
+  <meta name="keywords" content="VITA, therapeutic intelligence, AI therapeutics, precision medicine, drug delivery, biomarkers, diagnostics, virtual research initiative" />
+  <meta name="author" content="VITA" />
+
+  <style>
+    :root {
+      --white: #ffffff;
+      --paper: #f7f7f5;
+      --text: #171d20;
+      --muted: #5f6a70;
+      --light: #8a9499;
+      --line: #dcdeda;
+      --navy: #0d2b36;
+      --blue: #2f6572;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    a, button {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 1.15;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .brand strong {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.34rem;
+      font-weight: 500;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+    }
+
+    .brand span {
+      margin-top: 3px;
+      font-size: 0.71rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-link {
+      border: 0;
+      background: transparent;
+      color: #38454a;
+      cursor: pointer;
+      font-size: 0.92rem;
+      padding: 7px 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--navy);
+      border-bottom-color: var(--navy);
+    }
+
+    .contact-link {
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      background: var(--white);
+      min-height: 40px;
+      padding: 0 15px;
+      cursor: pointer;
+    }
+
+    .contact-link:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .menu-button {
+      display: none;
+      border: 1px solid var(--line);
+      background: var(--white);
+      min-height: 40px;
+      padding: 0 12px;
+      color: var(--navy);
+      cursor: pointer;
+    }
+
+    .page {
+      display: none;
+      min-height: calc(100vh - 74px);
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--navy);
+      font-weight: 500;
+      line-height: 1.18;
+    }
+
+    h1 {
+      font-size: clamp(2.15rem, 4vw, 3.75rem);
+      letter-spacing: -0.035em;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 3vw, 2.65rem);
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    .home-hero {
+      padding: 72px 0 72px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .home-hero-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .home-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--navy);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+
+    .home-subtitle {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .home-copy p {
+      color: #3e4d53;
+      font-size: clamp(1rem, 1.5vw, 1.12rem);
+      max-width: 620px;
+      margin-bottom: 18px;
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      min-height: 430px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: #899397;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    .hero-image-placeholder img,
+    .image-placeholder img,
+    .project-image img,
+    .logos-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .home-section {
+      padding: 66px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .text-link {
+      border: 0;
+      background: transparent;
+      color: var(--navy);
+      cursor: pointer;
+      font-weight: 700;
+      border-bottom: 1px solid var(--navy);
+      padding-bottom: 2px;
+      white-space: nowrap;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .featured-card {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: #899397;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+
+    .featured-card .meta {
+      color: var(--light);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .featured-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .featured-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .logos-section-text {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .logos-placeholder {
+      width: 100%;
+      min-height: 210px;
+      border: 1px dashed var(--line);
+      background: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #899397;
+      padding: 30px;
+    }
+
+    .news-home-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .news-card {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    .news-card .date {
+      color: var(--light);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 9px;
+    }
+
+    .news-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .news-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .join-block {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .join-block h2 {
+      margin-bottom: 12px;
+    }
+
+    .join-block p {
+      color: var(--muted);
+      max-width: 730px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .button.primary,
+    .button:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .page-hero {
+      padding: 70px 0 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .page-hero p {
+      color: #3e4d53;
+      font-size: 1.08rem;
+      max-width: 760px;
+      margin-top: 20px;
+    }
+
+    .page-content {
+      padding: 56px 0 76px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 70px;
+      margin-bottom: 62px;
+    }
+
+    .content-grid:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-grid p {
+      color: var(--muted);
+      max-width: 800px;
+      margin-bottom: 18px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+      margin-top: 30px;
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      margin-top: 30px;
+    }
+
+    .four-column {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .item {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    .item h3 {
+      margin-bottom: 10px;
+    }
+
+    .item p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .profile {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: #899397;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.84rem;
+      margin-bottom: 18px;
+    }
+
+    .role {
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .profile h3 {
+      font-size: 1.18rem;
+      margin-bottom: 8px;
+    }
+
+    .profile p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .placeholder-note {
+      display: inline-block;
+      color: #74633d;
+      background: #fbf8ea;
+      border: 1px solid #eee4bf;
+      padding: 2px 7px;
+      font-size: 0.72rem;
+      margin-bottom: 10px;
+    }
+
+    .publication-box,
+    .contact-box {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 34px;
+      max-width: 820px;
+    }
+
+    .publication-box h3,
+    .contact-box h3 {
+      font-size: 1.55rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-box a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 38px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    footer strong {
+      display: block;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .footer-links button:hover {
+      color: var(--navy);
+    }
+
+    .legal {
+      color: #798388;
+      max-width: 900px;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 1040px) {
+      .nav {
+        grid-template-columns: 1fr auto;
+      }
+
+      .contact-link {
+        display: none;
+      }
+
+      .menu-button {
+        display: inline-block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 74px;
+        left: 0;
+        right: 0;
+        display: none;
+        background: var(--white);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 18px 22px 24px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .home-hero-grid,
+      .content-grid,
+      .footer-grid,
+      .join-block {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .four-column {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .home-hero {
+        padding: 54px 0;
+      }
+
+      .home-section,
+      .page-content {
+        padding: 50px 0;
+      }
+
+      .page-hero {
+        padding: 52px 0 38px;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-header .text-link {
+        margin-top: 16px;
+      }
+
+      .featured-grid,
+      .news-home-grid,
+      .two-column,
+      .three-column,
+      .four-column {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-placeholder {
+        min-height: 300px;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <button class="brand nav-link active" data-page="home" aria-label="VITA home">
+        <strong>VITA</strong>
+        <span>Visionary Intelligence for Therapeutic Advancement</span>
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <button class="nav-link" data-page="about">About</button>
+        <button class="nav-link" data-page="research">Research</button>
+        <button class="nav-link" data-page="projects">Projects</button>
+        <button class="nav-link" data-page="people">People</button>
+        <button class="nav-link" data-page="advisory">Advisory</button>
+        <button class="nav-link" data-page="collaborators">Collaborators</button>
+        <button class="nav-link" data-page="publications">Publications</button>
+        <button class="nav-link" data-page="news">News</button>
+        <button class="nav-link" data-page="contact">Contact</button>
+      </nav>
+
+      <button class="contact-link nav-link" data-page="contact">Collaborate With Us</button>
+      <button class="menu-button" id="menuButton" aria-expanded="false" aria-label="Open menu">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page active" id="page-home" data-title="Home">
+      <div class="home-hero">
+        <div class="container home-hero-grid">
+          <div class="home-copy">
+            <div class="home-name">VITA</div>
+            <div class="home-subtitle">Visionary Intelligence for Therapeutic Advancement</div>
+            <p>
+              VITA is a virtual research initiative focused on artificial intelligence, precision medicine, therapeutic discovery, drug delivery systems, biomarkers, and diagnostics.
+            </p>
+            <p>
+              The initiative brings together scientific leadership, computational intelligence, nanotechnology, and translational strategy to shape credible research programs and collaborations in therapeutic advancement.
+            </p>
+          </div>
+          <div class="hero-image-placeholder">
+            Main Image Placeholder<br />Add a scientific, academic, or institutional image here
+          </div>
+        </div>
+      </div>
+
+      <div class="home-section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <div class="section-label">Featured Research</div>
+              <h2>Research directions</h2>
+            </div>
+            <button class="text-link" data-page="research">See all research</button>
+          </div>
+
+          <div class="featured-grid">
+            <article class="featured-card">
+              <div class="project-image">Image Placeholder<br />AI-guided therapeutic discovery</div>
+              <div class="meta">01 / Discovery</div>
+              <h3>AI-guided therapeutic discovery</h3>
+              <p>Computational strategies for target prioritization, evidence mapping, therapeutic opportunity discovery, and translational program design.</p>
+            </article>
+            <article class="featured-card">
+              <div class="project-image">Image Placeholder<br />Nanoparticle delivery platforms</div>
+              <div class="meta">02 / Delivery</div>
+              <h3>Nanoparticle-based delivery platforms</h3>
+              <p>Nanoscale systems for therapeutic delivery, biological stability, localization, and precision targeting.</p>
+            </article>
+            <article class="featured-card">
+              <div class="project-image">Image Placeholder<br />Precision dermatology platform</div>
+              <div class="meta">03 / Precision</div>
+              <h3>Precision dermatology platform</h3>
+              <p>Data-enabled dermatology research focused on biomarkers, patient stratification, and precision therapeutic pathways.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <div class="section-label">Collaborators & Supporters</div>
+              <h2>Academic and industry network</h2>
+            </div>
+            <button class="text-link" data-page="collaborators">View collaborators</button>
+          </div>
+          <p class="logos-section-text">
+            This section will highlight academic, industry, clinical, technology, and strategic supporters connected to VITA’s research network.
+          </p>
+          <div class="logos-placeholder">
+            Logos Image Placeholder<br />Upload one combined image containing all collaborator and supporter logos
+          </div>
+        </div>
+      </div>
+
+      <div class="home-section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <div class="section-label">News / Insights</div>
+              <h2>Updates and announcements</h2>
+            </div>
+            <button class="text-link" data-page="news">View all news</button>
+          </div>
+
+          <div class="news-home-grid">
+            <article class="news-card">
+              <div class="date">Coming soon</div>
+              <h3>VITA research direction</h3>
+              <p>A future update introducing VITA’s research focus across AI-guided therapeutic discovery, precision medicine, and biomarker intelligence.</p>
+            </article>
+            <article class="news-card">
+              <div class="date">Coming soon</div>
+              <h3>Collaboration opportunities</h3>
+              <p>A future announcement highlighting opportunities for academic, industry, clinical, and AI collaborators to contribute to VITA programs.</p>
+            </article>
+            <article class="news-card">
+              <div class="date">Coming soon</div>
+              <h3>Advisor network updates</h3>
+              <p>A future section for advisory board additions, scientific advisors, and strategic contributors.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-section">
+        <div class="container">
+          <div class="join-block">
+            <div>
+              <div class="section-label">Contact VITA</div>
+              <h2>Collaborate with us.</h2>
+              <p>
+                VITA welcomes conversations with researchers, advisors, institutions, companies, funders, investors, and translational partners interested in AI-enabled therapeutic advancement.
+              </p>
+            </div>
+            <button class="button primary" data-page="contact">Contact VITA</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-about" data-title="About">
+      <div class="page-hero">
+        <div class="container">
+          <span class="section-label">About VITA</span>
+          <h1>A virtual platform for therapeutic innovation.</h1>
+          <p>VITA is designed to attract collaborators, advisors, research partners, grant opportunities, and strategic support while remaining clearly separate from any unrelated commercial brand or product activity.</p>
+        </div>
+      </div>
+      <div class="container page-content">
+        <div class="content-grid">
+          <div><div class="section-label">Purpose</div><h2>Why VITA exists</h2></div>
+          <div>
+            <p>Modern therapeutic development requires coordinated intelligence across biology, computation, delivery science, diagnostics, and clinical translation.</p>
+            <p>VITA provides a professional virtual structure for shaping early research directions into credible collaborations, grant concepts, publications, and translational programs.</p>
+            <div class="two-column">
+              <div class="item"><h3>Collaborative</h3><p>Designed for academic, industry, AI, clinical, and advisory collaboration.</p></div>
+              <div class="item"><h3>Independent</h3><p>Presented as a separate research initiative with its own identity and mission.</p></div>
+              <div class="item"><h3>Focused</h3><p>Organized around clear research themes with translational relevance.</p></div>
+              <div class="item"><h3>Credible</h3><p>Built for professional communication with collaborators, funders, and advisors.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div><div class="section-label">Vision & Mission</div><h2>Intelligence, precision, translation</h2></div>
+          <div>
+            <p>Our vision is to accelerate the development of smarter therapeutic strategies by combining biomedical science, artificial intelligence, precision medicine, and advanced delivery technologies.</p>
+            <div class="three-column">
+              <div class="item"><h3>Vision</h3><p>Support the future of precision therapeutics through scientific intelligence and collaboration.</p></div>
+              <div class="item"><h3>Mission</h3><p>Build a credible virtual research network for therapeutic discovery, biomarker science, and translational development.</p></div>
+              <div class="item"><h3>Approach</h3><p>Organize research into clear, fundable, publication-ready, and partnership-ready programs.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-research" data-title="Research">
+      <div class="page-hero">
+        <div class="container">
+          <span class="section-label">Research Areas</span>
+          <h1>Core areas of focus.</h1>
+          <p>VITA focuses on areas where artificial intelligence can improve how therapies are discovered, designed, delivered, measured, and translated.</p>
+        </div>
+      </div>
+      <div class="container page-content">
+        <div class="two-column">
+          <div class="item"><h3>AI for Therapeutic Discovery</h3><p>Computational strategies for target prioritization, therapeutic concept generation, and evidence mapping.</p></div>
+          <div class="item"><h3>Precision Medicine</h3><p>Patient-centered therapeutic strategies informed by biological, molecular, and clinical context.</p></div>
+          <div class="item"><h3>AI-enabled Drug Delivery Systems</h3><p>Intelligent design of delivery platforms, formulation strategies, and tissue-targeted therapeutic systems.</p></div>
+          <div class="item"><h3>AI for Biomarkers and Diagnostics</h3><p>Data-driven biomarker discovery, diagnostic modeling, patient stratification, and translational decision support.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-projects" data-title="Projects">
+      <div class="page-hero">
+        <div class="container">
+          <span class="section-label">Current Projects</span>
+          <h1>Initial project directions.</h1>
+          <p>These project areas are intended to evolve into research collaborations, grant applications, publications, and strategic partnerships.</p>
+        </div>
+      </div>
+      <div class="container page-content">
+        <div class="three-column">
+          <div class="featured-card"><div class="project-image">Image Placeholder<br />AI-guided therapeutic discovery</div><h3>AI-guided Therapeutic Discovery</h3><p>Frameworks for target prioritization, therapeutic opportunity mapping, and translational program design.</p></div>
+          <div class="featured-card"><div class="project-image">Image Placeholder<br />Nanoparticle delivery platforms</div><h3>Nanoparticle-based Delivery Platforms</h3><p>Nanoscale systems for therapeutic delivery, stability, localization, and precision targeting.</p></div>
+          <div class="featured-card"><div class="project-image">Image Placeholder<br />Precision dermatology platform</div><h3>Precision Dermatology Platform</h3><p>Data-enabled dermatology research focused on biomarkers, patient stratification, and precision therapeutic pathways.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-people" data-title="People">
+      <div class="page-hero">
+        <div class="container">
+          <span class="section-label">Leadership Team</span>
+          <h1>Scientific and strategic leadership.</h1>
+          <p>VITA’s leadership team coordinates therapeutic innovation, scientific direction, artificial intelligence, and nanotechnology strategy.</p>
+        </div>
+      </div>
+      <div class="container page-content">
+        <div class="four-column">
+          <article class="profile">
+            <div class="image-placeholder">Image Placeholder<br>Sajjad Janfaza</div>
+            <div class="role">Head of Therapeutic Innovation</div>
+            <h3>Sajjad Janfaza</h3>
+            <p>Leads therapeutic strategy, translational research planning, and integration of AI-enabled discovery with clinically relevant programs.</p>
+          </article>
+          <article class="profile">
+            <div class="image-placeholder">Image Placeholder<br>Shirmohammad Tavangari</div>
+            <div class="role">Principal</div>
+            <h3>Shirmohammad Tavangari</h3>
+            <p>Provides scientific and organizational direction across VITA’s research activities and partnership development.</p>
+          </article>
+          <article class="profile">
+            <div class="image-placeholder">Image Placeholder<br>Arif Yelği</div>
+            <div class="role">Head of AI</div>
+            <h3>Arif Yelği</h3>
+            <p>Leads AI strategy and data-driven systems for therapeutic discovery, biomarkers, diagnostics, and decision support.</p>
+          </article>
+          <article class="profile">
+            <div class="image-placeholder">Image Placeholder<br>Emma S. Hill</div>
+            <div class="role">Head of Nanotechnology</div>
+            <h3>Emma S. Hill</h3>
+            <p>Guides nanotechnology strategy, delivery platform development, and integration of materials science with therapeutic applications.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-advisory" data-title="Advisory">
+      <div class="page-hero">
+        <div class="container">
+          <span class="section-label">Scientific & Strategic Advisory Board</span>
+          <h1>Independent guidance for scientific quality and growth.</h1>
+          <p>The advisory structure is designed to bring external scientific, technical, clinical, and industry perspectives into VITA’s research programs.</p>
+        </div>
+      </div>
+      <div class="container page-content">
+        <div class="three-column">
+          <article class="profile">
+            <div class="image-placeholder">Image Placeholder<br>Prof. Jay Rajadas</div>
+            <div class="role">Scientific Advisor</div>
+            <h3>Prof. Jayakumar “Jay” Rajadas, PhD</h3>
+            <p>Stanford Medicine-affiliated scientist with experience in advanced drug delivery, biomaterials, therapeutic discovery, and translational biomedical research.</p>
+          </article>
+          <article class="profile">
+            <div class="image-placeholder">Image Placeholder<br>Google Advisor</div>
+            <span class="placeholder-note">Placeholder</span>
+            <div class="role">AI & Cloud Infrastructure Advisor</div>
+            <h3>Advisor, Google</h3>
+            <p>Planned advisor profile for artificial intelligence infrastructure, cloud systems, scalable data platforms, and responsible AI deployment.</p>
+          </article>
+          <article class="profile">
+            <div class="image-placeholder">Image Placeholder<br>Harvard Advisor</div>
+            <span class="placeholder-note">Placeholder</span>
+            <div class="role">Translational Medicine Advisor</div>
+            <h3>Advisor, Harvard University</h3>
+            <p>Planned advisor profile for translational medicine, clinical research strategy, therapeutic validation, and academic partnerships.</p>
+          </article>
+          <article class="profile">
+            <div class="image-placeholder">Image Placeholder<br>Pfizer Advisor</div>
+            <span class="placeholder-note">Placeholder</span>
+            <div class="role">Pharmaceutical Strategy Advisor</div>
+            <h3>Advisor, Pfizer</h3>
+            <p>Planned advisor profile for drug development strategy, pharmaceutical translation, regulatory thinking, and industry collaboration.</p>
+          </article>
+          <article class="profile">
+            <div class="image-placeholder">Image Placeholder<br>Yale Advisor</div>
+            <span class="placeholder-note">Placeholder</span>
+            <div class="role">Biomedical Research Advisor</div>
+            <h3>Advisor, Yale University</h3>
+            <p>Planned advisor profile for biomedical research, academic collaboration, disease biology, and strategic scientific development.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-collaborators" data-title="Collaborators">
+      <div class="page-hero">
+        <div class="container">
+          <span class="section-label">Collaborators</span>
+          <h1>A growing research network.</h1>
+          <p>VITA is designed to collaborate with academic groups, industry partners, clinical researchers, AI teams, and translational innovation programs.</p>
+        </div>
+      </div>
+      <div class="container page-content">
+        <div class="logos-placeholder" style="margin-bottom: 38px;">
+          Logos Image Placeholder<br />Upload one combined image containing all collaborator and supporter logos
+        </div>
+        <div class="three-column">
+          <article class="profile"><div class="image-placeholder">Logo Placeholder<br>Collaborator 1</div><span class="placeholder-note">Placeholder</span><div class="role">Academic Collaborator</div><h3>Collaborator Name</h3><p>Reserved for an academic research collaborator supporting disease biology, validation, or translational research.</p></article>
+          <article class="profile"><div class="image-placeholder">Logo Placeholder<br>Collaborator 2</div><span class="placeholder-note">Placeholder</span><div class="role">Clinical Collaborator</div><h3>Collaborator Name</h3><p>Reserved for a clinical or translational partner supporting patient-centered research, diagnostics, or biomarkers.</p></article>
+          <article class="profile"><div class="image-placeholder">Logo Placeholder<br>Collaborator 3</div><span class="placeholder-note">Placeholder</span><div class="role">Industry Collaborator</div><h3>Collaborator Name</h3><p>Reserved for an industry partner supporting technology development, data systems, or commercialization pathways.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-publications" data-title="Publications">
+      <div class="page-hero">
+        <div class="container">
+          <span class="section-label">Publications</span>
+          <h1>Selected research outputs.</h1>
+          <p>This page will showcase publications, manuscripts, preprints, white papers, and research outputs connected to VITA’s scientific leadership and project directions.</p>
+        </div>
+      </div>
+      <div class="container page-content">
+        <div class="publication-box">
+          <h3>Publications Coming Soon</h3>
+          <p>Selected publications and research outputs will be added as VITA’s programs and collaborations are formalized.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-news" data-title="News">
+      <div class="page-hero">
+        <div class="container">
+          <span class="section-label">News / Insights</span>
+          <h1>Research updates and announcements.</h1>
+          <p>This page will be used for research notes, advisor announcements, collaboration updates, grant milestones, and short insights related to AI-enabled therapeutic advancement.</p>
+        </div>
+      </div>
+      <div class="container page-content">
+        <div class="three-column">
+          <div class="news-card"><div class="date">Coming soon</div><h3>Research Direction</h3><p>A future update introducing VITA’s research direction and scientific priorities.</p></div>
+          <div class="news-card"><div class="date">Coming soon</div><h3>Collaboration Opportunities</h3><p>A future announcement for academic, industry, clinical, and AI collaborators.</p></div>
+          <div class="news-card"><div class="date">Coming soon</div><h3>Advisor Network Updates</h3><p>A future section for advisors, strategic contributors, and scientific network updates.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-contact" data-title="Contact">
+      <div class="page-hero">
+        <div class="container">
+          <span class="section-label">Contact VITA</span>
+          <h1>Collaborate with us.</h1>
+          <p>VITA welcomes conversations with researchers, advisors, institutions, companies, funders, investors, and translational partners interested in AI-enabled therapeutic advancement.</p>
+        </div>
+      </div>
+      <div class="container page-content">
+        <div class="contact-box">
+          <h3>Contact VITA</h3>
+          <p>Email: <a href="mailto:info@vita.org">info@vita.org</a></p>
+          <p><a href="mailto:info@vita.org?subject=Collaboration%20Inquiry%20for%20VITA">Collaborate With Us</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>VITA</strong>
+        <p>Visionary Intelligence for Therapeutic Advancement</p>
+      </div>
+      <div>
+        <div class="footer-links">
+          <button data-page="about">About</button>
+          <button data-page="research">Research</button>
+          <button data-page="people">People</button>
+          <button data-page="advisory">Advisory</button>
+          <button data-page="collaborators">Collaborators</button>
+          <button data-page="contact">Contact</button>
+        </div>
+        <p class="legal">
+          VITA is presented as a virtual research initiative and collaborative network. It is not described as a registered university, degree-granting institution, or physical academic campus. References to advisors, collaborators, organizations, or institutions are for descriptive purposes only and do not imply formal endorsement, employment, sponsorship, or institutional approval unless explicitly stated in writing.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const pageButtons = document.querySelectorAll('[data-page]');
+    const navLinks = document.getElementById('navLinks');
+    const menuButton = document.getElementById('menuButton');
+
+    function showPage(pageName, updateHash = true) {
+      const target = document.getElementById(`page-${pageName}`);
+      if (!target) return;
+
+      pages.forEach((page) => page.classList.remove('active'));
+      target.classList.add('active');
+
+      pageButtons.forEach((button) => {
+        button.classList.toggle('active', button.dataset.page === pageName);
+      });
+
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = 'Menu';
+
+      const title = target.dataset.title || 'VITA';
+      document.title = title === 'Home'
+        ? 'VITA | Visionary Intelligence for Therapeutic Advancement'
+        : `${title} | VITA`;
+
+      if (updateHash) {
+        history.pushState(null, '', pageName === 'home' ? window.location.pathname : `#${pageName}`);
+      }
+
+      window.scrollTo(0, 0);
+    }
+
+    pageButtons.forEach((button) => {
+      button.addEventListener('click', () => showPage(button.dataset.page));
+    });
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? 'Close' : 'Menu';
+    });
+
+    window.addEventListener('popstate', () => {
+      const pageName = window.location.hash.replace('#', '') || 'home';
+      showPage(pageName, false);
+    });
+
+    const initialPage = window.location.hash.replace('#', '') || 'home';
+    showPage(initialPage, false);
+  </script>
+</body>
+</html>
