@@ -65,22 +65,34 @@
     .nav {
       min-height: 74px;
       display: grid;
-      grid-template-columns: 220px 1fr auto;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 28px;
     }
 
     .brand {
       display: inline-flex;
-      flex-direction: column;
-      line-height: 1.15;
+      align-items: center;
+      gap: 12px;
       border: 0;
       background: transparent;
       cursor: pointer;
       text-align: left;
     }
 
-    .brand strong {
+    .brand-logo {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-text strong {
       font-family: Georgia, 'Times New Roman', serif;
       font-size: 1.34rem;
       font-weight: 500;
@@ -88,7 +100,7 @@
       letter-spacing: 0.08em;
     }
 
-    .brand span {
+    .brand-text span {
       margin-top: 3px;
       font-size: 0.71rem;
       color: var(--muted);
@@ -663,7 +675,11 @@
 
     @media (max-width: 1040px) {
       .nav {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: auto 1fr auto;
+      }
+
+      .brand-text {
+        display: none;
       }
 
       .contact-link {
@@ -777,8 +793,11 @@
   <header class="site-header">
     <div class="container nav">
       <button class="brand nav-link active" data-page="home" aria-label="VITA home">
-        <strong>VITA</strong>
-        <span>Visionary Intelligence for Therapeutic Advancement</span>
+        <img src="logo.png" alt="VITA Logo" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="brand-text">
+          <strong>VITA</strong>
+          <span>Visionary Intelligence for Therapeutic Advancement</span>
+        </div>
       </button>
 
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
