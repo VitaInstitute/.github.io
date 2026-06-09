@@ -950,41 +950,389 @@
     </section>
 
     <section class="page" id="page-about" data-title="About">
-      <div class="page-hero">
-        <div class="container">
-          <span class="section-label">About VITA</span>
-          <h1>A virtual platform for therapeutic innovation.</h1>
-          <p>VITA is designed to attract collaborators, advisors, research partners, grant opportunities, and strategic support while remaining clearly separate from any unrelated commercial brand or product activity.</p>
-        </div>
-      </div>
-      <div class="container page-content">
-        <div class="content-grid">
-          <div><div class="section-label">Purpose</div><h2>Why VITA exists</h2></div>
-          <div>
-            <p>Modern therapeutic development requires coordinated intelligence across biology, computation, delivery science, diagnostics, and clinical translation.</p>
-            <p>VITA provides a professional virtual structure for shaping early research directions into credible collaborations, grant concepts, publications, and translational programs.</p>
-            <div class="two-column">
-              <div class="item"><h3>Collaborative</h3><p>Designed for academic, industry, AI, clinical, and advisory collaboration.</p></div>
-              <div class="item"><h3>Independent</h3><p>Presented as a separate research initiative with its own identity and mission.</p></div>
-              <div class="item"><h3>Focused</h3><p>Organized around clear research themes with translational relevance.</p></div>
-              <div class="item"><h3>Credible</h3><p>Built for professional communication with collaborators, funders, and advisors.</p></div>
-            </div>
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">About VITA</span>
+      <h1>A virtual platform for therapeutic innovation.</h1>
+      <p>VITA is designed to attract collaborators, advisors, research partners, grant opportunities, and strategic support while remaining clearly separate from any unrelated commercial brand or product activity.</p>
+    </div>
+  </div>
+  <div class="container page-content">
+    <div class="content-grid">
+      <div><div class="section-label">Purpose</div><h2>Why VITA exists</h2></div>
+      <div class="about-purpose-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+        <div>
+          <p>Modern therapeutic development requires coordinated intelligence across biology, computation, delivery science, diagnostics, and clinical translation.</p>
+          <p>VITA provides a professional virtual structure for shaping early research directions into credible collaborations, grant concepts, publications, and translational programs.</p>
+          <div class="two-column">
+            <div class="item"><h3>Collaborative</h3><p>Designed for academic, industry, AI, clinical, and advisory collaboration.</p></div>
+            <div class="item"><h3>Independent</h3><p>Presented as a separate research initiative with its own identity and mission.</p></div>
+            <div class="item"><h3>Focused</h3><p>Organized around clear research themes with translational relevance.</p></div>
+            <div class="item"><h3>Credible</h3><p>Built for professional communication with collaborators, funders, and advisors.</p></div>
           </div>
         </div>
+        
+        <!-- DNA Widget -->
+        <div class="nd-dna-widget-pro">
+          <canvas id="ndDnaCanvasPro"></canvas>
+        </div>
+      </div>
+    </div>
 
-        <div class="content-grid">
-          <div><div class="section-label">Vision & Mission</div><h2>Intelligence, precision, translation</h2></div>
-          <div>
-            <p>Our vision is to accelerate the development of smarter therapeutic strategies by combining biomedical science, artificial intelligence, precision medicine, and advanced delivery technologies.</p>
-            <div class="three-column">
-              <div class="item"><h3>Vision</h3><p>Support the future of precision therapeutics through scientific intelligence and collaboration.</p></div>
-              <div class="item"><h3>Mission</h3><p>Build a credible virtual research network for therapeutic discovery, biomarker science, and translational development.</p></div>
-              <div class="item"><h3>Approach</h3><p>Organize research into clear, fundable, publication-ready, and partnership-ready programs.</p></div>
-            </div>
-          </div>
+    <div class="content-grid">
+      <div><div class="section-label">Vision & Mission</div><h2>Intelligence, precision, translation</h2></div>
+      <div>
+        <p>Our vision is to accelerate the development of smarter therapeutic strategies by combining biomedical science, artificial intelligence, precision medicine, and advanced delivery technologies.</p>
+        <div class="three-column">
+          <div class="item"><h3>Vision</h3><p>Support the future of precision therapeutics through scientific intelligence and collaboration.</p></div>
+          <div class="item"><h3>Mission</h3><p>Build a credible virtual research network for therapeutic discovery, biomarker science, and translational development.</p></div>
+          <div class="item"><h3>Approach</h3><p>Organize research into clear, fundable, publication-ready, and partnership-ready programs.</p></div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nd-dna-widget-pro {
+    width: 100%;
+    height: 560px;
+    background: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #ndDnaCanvasPro {
+    width: 100%;
+    max-width: 760px;
+    height: 560px;
+    display: block;
+    background: transparent !important;
+  }
+
+  @media (max-width: 1040px) {
+    .about-purpose-wrapper {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+    
+    .nd-dna-widget-pro {
+      height: 450px;
+    }
+    
+    #ndDnaCanvasPro {
+      height: 450px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .nd-dna-widget-pro {
+      height: 350px;
+    }
+
+    #ndDnaCanvasPro {
+      height: 350px;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  const canvas = document.getElementById("ndDnaCanvasPro");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  let width, height, dpr;
+
+  const pairs = 44;
+  const radius = 78;
+  const helixHeight = 420;
+  const twist = 0.43;
+  const perspective = 700;
+
+  let streams = [];
+  const streamSpacing = 22;
+
+  function rand(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function randInt(min, max) {
+    return Math.floor(rand(min, max + 1));
+  }
+
+  function resizeCanvas() {
+    dpr = window.devicePixelRatio || 1;
+    width = canvas.clientWidth;
+    height = canvas.clientHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    createStreams();
+  }
+
+  function createStreams() {
+    streams = [];
+    const cols = Math.ceil(width / streamSpacing);
+
+    for (let i = 0; i < cols; i++) {
+      streams.push({
+        x: i * streamSpacing + rand(-4, 4),
+        y: rand(-height, height),
+        speed: rand(0.9, 1.9),
+        length: randInt(10, 22),
+        charSize: randInt(13, 18),
+        alpha: rand(0.28, 0.62)
+      });
+    }
+  }
+
+  window.addEventListener("resize", resizeCanvas);
+
+  function rotateY(point, angle) {
+    const cos = Math.cos(angle);
+    const sin = Math.sin(angle);
+
+    return {
+      x: point.x * cos - point.z * sin,
+      y: point.y,
+      z: point.x * sin + point.z * cos
+    };
+  }
+
+  function project(point) {
+    const scale = perspective / (perspective + point.z);
+    return {
+      x: width / 2 + point.x * scale,
+      y: height / 2 + point.y * scale,
+      scale: scale,
+      z: point.z
+    };
+  }
+
+  function drawSphere(x, y, r, alpha, darkTone, lightTone) {
+    const grad = ctx.createRadialGradient(
+      x - r * 0.35,
+      y - r * 0.35,
+      0,
+      x,
+      y,
+      r * 1.8
+    );
+
+    grad.addColorStop(0, lightTone);
+    grad.addColorStop(0.45, darkTone);
+    grad.addColorStop(1, "rgba(0,0,0,0.95)");
+
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.globalAlpha = Math.min(alpha, 0.32);
+    ctx.fillStyle = "rgba(255,255,255,0.18)";
+    ctx.beginPath();
+    ctx.arc(x - r * 0.25, y - r * 0.28, r * 0.18, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.globalAlpha = 1;
+  }
+
+  function drawLine(a, b, colorA, colorB, thickness, alpha) {
+    const gradient = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+    gradient.addColorStop(0, colorA);
+    gradient.addColorStop(0.5, colorB);
+    gradient.addColorStop(1, colorA);
+
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = thickness;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  function drawMatrixRain() {
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    for (let i = 0; i < streams.length; i++) {
+      const s = streams[i];
+
+      s.y += s.speed;
+
+      if (s.y - s.length * s.charSize > height + 40) {
+        s.y = rand(-220, -40);
+        s.speed = rand(0.9, 1.9);
+        s.length = randInt(10, 22);
+        s.charSize = randInt(13, 18);
+        s.alpha = rand(0.28, 0.62);
+      }
+
+      for (let j = 0; j < s.length; j++) {
+        const charY = s.y - j * s.charSize;
+        const bit = Math.random() > 0.5 ? "1" : "0";
+
+        if (charY < -30 || charY > height + 30) continue;
+
+        const fade = 1 - (j / s.length);
+        const a = s.alpha * fade;
+
+        ctx.save();
+        ctx.font = `600 ${s.charSize}px Courier New, monospace`;
+
+        if (j === 0) {
+          ctx.fillStyle = `rgba(0,0,0,${Math.min(0.95, a + 0.28)})`;
+        } else if (j < 4) {
+          ctx.fillStyle = `rgba(25,25,25,${Math.min(0.8, a + 0.12)})`;
+        } else {
+          ctx.fillStyle = `rgba(70,70,70,${a})`;
+        }
+
+        ctx.fillText(bit, s.x, charY);
+        ctx.restore();
+      }
+    }
+
+    ctx.strokeStyle = "rgba(0,0,0,0.10)";
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+    ctx.moveTo(28, 28);
+    ctx.lineTo(54, 28);
+    ctx.moveTo(28, 28);
+    ctx.lineTo(28, 54);
+
+    ctx.moveTo(width - 28, 28);
+    ctx.lineTo(width - 54, 28);
+    ctx.moveTo(width - 28, 28);
+    ctx.lineTo(width - 28, 54);
+
+    ctx.moveTo(28, height - 28);
+    ctx.lineTo(54, height - 28);
+    ctx.moveTo(28, height - 28);
+    ctx.lineTo(28, height - 54);
+
+    ctx.moveTo(width - 28, height - 28);
+    ctx.lineTo(width - 54, height - 28);
+    ctx.moveTo(width - 28, height - 28);
+    ctx.lineTo(width - 28, height - 54);
+    ctx.stroke();
+  }
+
+  function animate(time) {
+    ctx.clearRect(0, 0, width, height);
+
+    drawMatrixRain();
+
+    const rotation = time * 0.00012;
+
+    const leftPoints = [];
+    const rightPoints = [];
+    const pairsData = [];
+
+    for (let i = 0; i < pairs; i++) {
+      const t = i / (pairs - 1);
+      const y = -helixHeight / 2 + t * helixHeight;
+      const angle = i * twist + rotation;
+
+      const p1 = {
+        x: Math.cos(angle) * radius,
+        y: y,
+        z: Math.sin(angle) * radius
+      };
+
+      const p2 = {
+        x: Math.cos(angle + Math.PI) * radius,
+        y: y,
+        z: Math.sin(angle + Math.PI) * radius
+      };
+
+      const rp1 = rotateY(p1, rotation * 0.65);
+      const rp2 = rotateY(p2, rotation * 0.65);
+
+      const sp1 = project(rp1);
+      const sp2 = project(rp2);
+
+      leftPoints.push(sp1);
+      rightPoints.push(sp2);
+      pairsData.push([sp1, sp2]);
+    }
+
+    pairsData.sort((a, b) => ((a[0].z + a[1].z) - (b[0].z + b[1].z)));
+
+    for (let i = 0; i < leftPoints.length - 1; i++) {
+      const a = leftPoints[i];
+      const b = leftPoints[i + 1];
+      const c = rightPoints[i];
+      const d = rightPoints[i + 1];
+
+      const alpha1 = Math.max(0.22, Math.min(0.95, (a.scale + b.scale) / 2));
+      const alpha2 = Math.max(0.22, Math.min(0.95, (c.scale + d.scale) / 2));
+
+      drawLine(
+        a, b,
+        "rgba(12,12,12,0.98)",
+        "rgba(85,85,85,0.96)",
+        5 * a.scale,
+        alpha1
+      );
+
+      drawLine(
+        c, d,
+        "rgba(12,12,12,0.98)",
+        "rgba(85,85,85,0.96)",
+        5 * c.scale,
+        alpha2
+      );
+    }
+
+    pairsData.forEach(([a, b], i) => {
+      const avgScale = (a.scale + b.scale) / 2;
+      const alpha = Math.max(0.20, Math.min(0.88, avgScale));
+
+      const rungDark =
+        i % 3 === 0 ? "rgba(18,18,18,0.95)" :
+        i % 3 === 1 ? "rgba(28,28,28,0.95)" :
+                      "rgba(40,40,40,0.95)";
+
+      const rungLight = "rgba(105,105,105,0.82)";
+
+      drawLine(a, b, rungDark, rungLight, 2.8 * avgScale, alpha);
+
+      drawSphere(
+        a.x,
+        a.y,
+        7.2 * a.scale,
+        alpha,
+        "rgba(18,18,18,0.98)",
+        "rgba(120,120,120,0.72)"
+      );
+
+      drawSphere(
+        b.x,
+        b.y,
+        7.2 * b.scale,
+        alpha,
+        "rgba(18,18,18,0.98)",
+        "rgba(120,120,120,0.72)"
+      );
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  resizeCanvas();
+  requestAnimationFrame(animate);
+})();
+</script>
 
     <section class="page" id="page-research" data-title="Research Areas">
       <div class="page-hero">
